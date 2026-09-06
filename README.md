@@ -73,7 +73,7 @@ The model predicts one of the following ten tomato leaf categories:
 
 ---
 
-## Repository Structure
+## Project Structure
 
 ```text
 Tomato_Leaf_Disease_Classification/
@@ -89,6 +89,7 @@ Tomato_Leaf_Disease_Classification/
 ├── train_resnet18.ipynb
 ├── requirements.txt
 ├── .gitignore
+├── LICENSE
 └── README.md
 ```
 
