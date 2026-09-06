@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Tomato Leaf Disease Detection</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css"
+    >
+
+    <script
+        src="/static/script.js"
+        defer
+    ></script>
+</head>
+
+<body>
+
+    <div
+        class="overlay"
+        id="overlay"
+    ></div>
+
+
+    <aside
+        class="model-sidebar"
+        id="modelSidebar"
+    >
+
+        <div class="sidebar-header">
+
+            <div>
+                <p class="sidebar-eyebrow">
+                    Deep Learning Model
+                </p>
+
+                <h2>
+                    Model Information
+                </h2>
+            </div>
+
+            <button
+                class="close-sidebar"
+                id="closeSidebar"
+                aria-label="Close model information"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="model-chip">
+            ResNet18
+        </div>
+
+
+        <div class="model-stats">
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    Architecture
+                </span>
+
+                <strong>
+                    ResNet18
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    Input Size
+                </span>
+
+                <strong>
+                    128 × 128
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    Validation Accuracy
+                </span>
+
+                <strong>
+                    98.6672%
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    Test Accuracy
+                </span>
+
+                <strong>
+                    98.3770%
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="class-section">
+
+            <div class="class-heading">
+
+                <h3>
+                    Supported Classes
+                </h3>
+
+                <span>
+                    10 classes
+                </span>
+
+            </div>
+
+
+            <div class="class-list">
+
+                <div class="class-item">
+                    <span>01</span>
+                    Tomato Bacterial Spot
+                </div>
+
+                <div class="class-item">
+                    <span>02</span>
+                    Tomato Early Blight
+                </div>
+
+                <div class="class-item">
+                    <span>03</span>
+                    Tomato Late Blight
+                </div>
+
+                <div class="class-item">
+                    <span>04</span>
+                    Tomato Leaf Mold
+                </div>
+
+                <div class="class-item">
+                    <span>05</span>
+                    Tomato Septoria Leaf Spot
+                </div>
+
+                <div class="class-item">
+                    <span>06</span>
+                    Tomato Spider Mites
+                </div>
+
+                <div class="class-item">
+                    <span>07</span>
+                    Tomato Target Spot
+                </div>
+
+                <div class="class-item">
+                    <span>08</span>
+                    Tomato Yellow Leaf Curl Virus
+                </div>
+
+                <div class="class-item">
+                    <span>09</span>
+                    Tomato Mosaic Virus
+                </div>
+
+                <div class="class-item healthy">
+                    <span>10</span>
+                    Tomato Healthy
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-note">
+
+            <strong>
+                Model
+            </strong>
+
+            <p>
+                Transfer-learning based ResNet18 model trained
+                to classify tomato leaf images into ten categories.
+            </p>
+
+        </div>
+
+    </aside>
+
+
+
+    <div class="page">
+
+        <nav class="navbar">
+
+            <div class="logo">
+
+                <div class="logo-mark">
+                    🌿
+                </div>
+
+                <div>
+                    <strong>
+                        TomatoAI
+                    </strong>
+
+                    <span>
+                        Leaf Intelligence
+                    </span>
+                </div>
+
+            </div>
+
+
+            <button
+                class="model-info-button"
+                id="openSidebar"
+            >
+
+                <span class="info-icon">
+                    i
+                </span>
+
+                Model Info
+
+            </button>
+
+        </nav>
+
+
+
+        <main>
+
+            <section class="hero">
+
+                <p class="hero-label">
+                    AI-POWERED PLANT HEALTH ANALYSIS
+                </p>
+
+                <h1>
+                    Tomato Leaf Disease
+                    <span>
+                        Detection
+                    </span>
+                </h1>
+
+                <p class="hero-description">
+                    Upload a clear image of a tomato leaf and
+                    receive an AI-powered disease prediction
+                    with a confidence score.
+                </p>
+
+            </section>
+
+
+
+            <section class="prediction-wrapper">
+
+                <div class="upload-card">
+
+                    <div class="card-heading">
+
+                        <div>
+
+                            <p class="small-label">
+                                IMAGE ANALYSIS
+                            </p>
+
+                            <h2>
+                                Upload Tomato Leaf
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <label
+                        class="upload-area"
+                        id="dropArea"
+                        for="imageInput"
+                    >
+
+                        <div class="upload-symbol">
+                            ↑
+                        </div>
+
+                        <h3>
+                            Drop your image here
+                        </h3>
+
+                        <p>
+                            or click anywhere in this area to browse
+                        </p>
+
+                        <span class="file-types">
+                            JPG & PNG
+                        </span>
+
+                    </label>
+
+
+                    <input
+                        id="imageInput"
+                        type="file"
+                        accept="image/jpeg,image/png"
+                        hidden
+                    >
+
+
+                    <div
+                        class="preview-section"
+                        id="previewSection"
+                    >
+
+                        <div class="preview-header">
+
+                            <span>
+                                Selected image
+                            </span>
+
+                            <button
+                                type="button"
+                                id="removeImage"
+                            >
+                                Remove
+                            </button>
+
+                        </div>
+
+                        <img
+                            id="previewImage"
+                            alt="Selected tomato leaf"
+                        >
+
+                    </div>
+
+
+                    <button
+                        class="analyze-button"
+                        id="analyzeButton"
+                        type="button"
+                    >
+                        Analyze Leaf
+                    </button>
+
+
+                    <div
+                        class="loading-section"
+                        id="loadingSection"
+                    >
+
+                        <div class="spinner"></div>
+
+                        <span>
+                            Analyzing tomato leaf...
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="error-box"
+                        id="errorBox"
+                    ></div>
+
+                </div>
+
+
+
+                <div
+                    class="result-card"
+                    id="resultCard"
+                >
+
+                    <div class="result-top">
+
+                        <div class="result-check">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <p>
+                                ANALYSIS COMPLETE
+                            </p>
+
+                            <h2>
+                                Prediction Result
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="disease-result">
+
+                        <span class="result-caption">
+                            Detected Condition
+                        </span>
+
+                        <h3 id="predictionText">
+                            Tomato Late Blight
+                        </h3>
+
+                    </div>
+
+
+                    <div class="confidence">
+
+                        <div class="confidence-heading">
+
+                            <span>
+                                Model Confidence
+                            </span>
+
+                            <strong id="confidenceText">
+                                94.32%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="confidence-track">
+
+                            <div
+                                class="confidence-value"
+                                id="confidenceValue"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="disclaimer">
+
+                        <div>
+                            !
+                        </div>
+
+                        <p>
+                            This result is generated by a machine-learning
+                            model and should not be considered professional
+                            agricultural advice.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+
+        <footer>
+
+            <div>
+
+                <strong>
+                    TomatoAI
+                </strong>
+
+                <span>
+                    Tomato Leaf Disease Classification
+                </span>
+
+            </div>
+
+            <p>
+                PyTorch • ResNet18 • FastAPI
+            </p>
+
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
